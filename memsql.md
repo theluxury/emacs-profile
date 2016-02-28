@@ -89,7 +89,7 @@ You can add a --prompt=”memsql> “ at the end to make it look nicer.
 
 ## Automating a MemSQL Task
 
-<br><b>8:</b> The bash file code is
+<br><b>8:</b> The bash script code is
 ```
 echo "Please input username:"
 read user
