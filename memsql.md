@@ -2,7 +2,7 @@
 
 ## Linux Pop Quiz
 
-1: The rsa that is in ~/.ssh/ on master is not in child aggregator yet. I found this out by trying
+1: The rsa file that is in ~/.ssh/ on master is not in child aggregator yet. I found this out by trying
 
     ssh ip-10-0-1-110.ec2.internal -v
   
@@ -17,9 +17,9 @@ The ips for the respective nodes are <br>
 <b>Leaf 1</b>: 52.90.121.31 <br>
 <b>Leaf 2</b>: 54.175.54.74
 
-3: I personally just use iterms which allows you to broadcast commands across multiple terminal windows. If that was not an option I guess I could write a bash script that loops through the nodes and runs the command.
+3: I personally use iterms which allows one to broadcast commands across multiple terminal windows. If that is not an option, I can write a bash script that loops through the nodes and runs the command.
 
-It would appear that the master aggregator is under the most load form top.
+It would appear that the master aggregator is under the most load from top.
 ```
 ubuntu@MasterAggregator:~$ top
 top - 03:22:06 up 21:14,  2 users,  load average: 0.00, 0.02, 0.05
@@ -74,12 +74,12 @@ ubuntu@MasterAggregator:~$ df -hi
 Filesystem     Inodes IUsed IFree IUse% Mounted on
 /dev/xvda1       8.0M  8.0M   885  100% /
 ```
-to see that inodes were full. I restarted the node and afterwards root was able to write files. After that, the question became tricky. There are few options to give ubuntu write access to root partition, but none of them seemed great.
-I could `sudo chmod a+w /` to give all users root write access, but that didn't seem great.
-Changing the owner of the root partition of ubuntu would not work. The best option is most like `sudo usermod -aG sudo ubuntu`. 
+to see that inodes were full. I restarted the node and afterwards root was able to write files. After that, the solution to this problem became tricky. There are few options to give ubuntu write access to root partition, none of them seemed great.
+I could `sudo chmod a+w /` to give all users root write access, but that is potentially unsafe.
+Changing the owner of the root partition of ubuntu would not work. The best option is most likely `sudo usermod -aG sudo ubuntu`. 
 However, I didn't think giving ubuntu full sudo permission was wise. Here is a link describing why all the choices are bad,
-as well as an alternative solution using ACl.  http://serverfault.com/questions/188537/giving-user-read-permissions-everywhere-linux
-In real life, I would probably ask for help before proceeding, so therefor I left this problem 'blank'
+as well as an alternative solution using ACL.  http://serverfault.com/questions/188537/giving-user-read-permissions-everywhere-linux
+In real life, I would probably ask for help before proceeding, so therefore I left this problem 'blank'
 
 6: The alias already existed on the node. But the command to do it would be
 
@@ -107,7 +107,7 @@ while IFS='' read -r line || [[ -n "$line" ]]; do
     echo "${output};" >>"$output_path"
 done
 ```
-It will ask the user to input a username, password, host, and path to write the .sql file. The location of the file is `/home/ubuntu/grant_script.sh`
+It will prompt the user to input a username, password, host, and path to write the .sql file. The location of the file is `/home/ubuntu/grant_script.sh`
 
 ## Query Optimization
 
@@ -125,7 +125,7 @@ To fix this, I created an index on the suppkey column in the partsupp table with
     create index suppkey_index on partsupp(suppkey);
     
 and afterwards the query speed dropped to ~0.1s. I also tried adding other indexes, such as on `part.size`, however the other indexes
-seemed to have no effect of performance.
+seemed to have no effect on performance.
 
 ## Answering a Support Question
 
@@ -137,8 +137,8 @@ I’m sorry that you’ve come across this error. The problem is not on your end
 
     select substring(address, 1, 10) from customer where acctbal>10 limit 100;
 
-Though we at MemSQL do try to make the experience as smooth as possible, there will on occasion be MySQL queries that do not work for MemSQL. A full list of supported MemSQL queries can be found at http://docs.memsql.com/latest/ref/functions/. We at MemSQL are always here to help out, and please feel free to contact us again if you have any question!
+Though we at MemSQL do try to make the experience as smooth as possible, there will on occasion be MySQL queries that do not work for MemSQL. A full list of supported MemSQL queries can be found at http://docs.memsql.com/latest/ref/functions/. We at MemSQL are always here to help out, and please feel free to contact us again if you have any questions!
 
--Mark Wang
-MemSQL Support Engineer
-mark@memsql.com
+-Mark Wang <br>
+MemSQL Support Engineer <br>
+mark@memsql.com<br>
