@@ -2,7 +2,7 @@
 
 ## Linux Pop Quiz
 
-<br><b>1:</b> The rsa file that is in ~/.ssh/ on master is not in child aggregator yet. I found this out by trying
+<br><b>1:</b> The rsa key that is in ~/.ssh/id_rsa on master is not in child aggregator yet. I found this out by trying
 
     ssh ip-10-0-1-110.ec2.internal -v
   
@@ -75,8 +75,8 @@ ubuntu@MasterAggregator:~$ df -hi
 Filesystem     Inodes IUsed IFree IUse% Mounted on
 /dev/xvda1       8.0M  8.0M   885  100% /
 ```
-to see that inodes were full. I restarted the node and afterwards root was able to write files. After that, the solution to this problem became tricky. There are few options to give ubuntu write access to root partition, none of them seemed great.
-I could `sudo chmod a+w /` to give all users root write access, but that is potentially unsafe.
+to see that inodes were full. I restarted the node and afterwards root was able to write files. After that, the solution to this problem became tricky. There are a few options to give ubuntu write access to root partition, none of which seemed great.
+I could `sudo chmod a+w /` to give all users write access, but that is potentially unsafe.
 Changing the owner of the root partition of ubuntu would not work. The best option is most likely `sudo usermod -aG sudo ubuntu`. 
 However, I didn't think giving ubuntu full sudo permission was wise. Here is a link describing why all the choices are bad,
 as well as an alternative solution using ACL.  http://serverfault.com/questions/188537/giving-user-read-permissions-everywhere-linux
