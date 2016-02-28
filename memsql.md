@@ -1,4 +1,4 @@
-# Support Enginner Take Home Assignment
+# Support Engineer Take Home Assignment
 
 ## Linux Pop Quiz
 
