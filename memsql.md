@@ -44,7 +44,7 @@ KiB Swap: 10485756 total,        0 used, 10485756 free.  2948060 cached Mem
 ubuntu@MasterAggregator:~$ cat /proc/cpuinfo | grep processor | wc -l
 4
 ```
-Disk space: 126GB on the main drive, 74GB on what I think is the Raid array. 
+Disk space: 126GB on the main drive, 74GB on what I believe is the Raid array. 
 ```
 ubuntu@MasterAggregator:~$ df -h
 Filesystem      Size  Used Avail Use% Mounted on
@@ -75,7 +75,7 @@ ubuntu@MasterAggregator:~$ df -hi
 Filesystem     Inodes IUsed IFree IUse% Mounted on
 /dev/xvda1       8.0M  8.0M   885  100% /
 ```
-to see that inodes were full. I restarted the node and afterwards root was able to write files. After that, the solution to this problem became tricky. There are a few options to give ubuntu write access to root partition, none of which seemed great.
+to see that inodes were full. I rebooted the node and afterwards root was able to write files. After that, the solution to this problem became tricky. There are a few options to give ubuntu write access to root partition, none of which seemed great.
 I could `sudo chmod a+w /` to give all users write access, but that is potentially unsafe.
 Changing the owner of the root partition of ubuntu would not work. The best option is most likely `sudo usermod -aG sudo ubuntu`. 
 However, I didn't think giving ubuntu full sudo permission was wise. Here is a link describing why all the choices are bad,
@@ -94,7 +94,7 @@ You can add a --prompt=”memsql> “ at the end to make it look nicer.
 ```
 echo "Please input username:"
 read user
-echo "Password: (leave blank if no password):"
+echo "Password: (leave blank if no password)"
 read password
 echo "Host:"
 read host
@@ -117,7 +117,7 @@ It will prompt the user to input a username, password, host, and path to write t
 | id   | select_type | table      | type              | possible_keys         | key           | key_len | ref   | rows   | Extra                                     | Query | RealTable | Cost   |
 |   12 | SIMPLE      | partsupp   | ref               | suppkey_index         | suppkey_index | NULL    | NULL  | 801168 |                                           | NULL  | partsupp  |   NULL |
 ```
-Note: The original line did not have suppkey_index and it was doing the 800,000 row query without an index. This was confirmed by running
+Note: The original line did not have suppkey_index and it was running the 800,000 row query without an index. This was confirmed by running
 
     show create table partsupp;
     
