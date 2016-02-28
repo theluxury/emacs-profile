@@ -2,13 +2,13 @@
 
 ## Linux Pop Quiz
 
-1: The rsa file that is in ~/.ssh/ on master is not in child aggregator yet. I found this out by trying
+<br>1: The rsa file that is in ~/.ssh/ on master is not in child aggregator yet. I found this out by trying
 
     ssh ip-10-0-1-110.ec2.internal -v
   
 in the child aggregator and the log said it could not find identity file ~/.ssh/id_rsa. I copied ~/.ssh/id_rsa from master aggregator to child aggregator and ssh worked after.
 
-2: I got the public ips using
+<br><br>2: I got the public ips using
 
     wget http://ipinfo.io/ip -qO -
     
@@ -17,7 +17,7 @@ The ips for the respective nodes are <br>
 <b>Leaf 1</b>: 52.90.121.31 <br>
 <b>Leaf 2</b>: 54.175.54.74
 
-3: I personally use iterms which allows one to broadcast commands across multiple terminal windows. If that is not an option, I can write a bash script that loops through the nodes and runs the command.
+<br><br>3: I personally use iterms which allows one to broadcast commands across multiple terminal windows. If that is not an option, I can write a bash script that loops through the nodes and runs the command.
 
 It would appear that the master aggregator is under the most load from top.
 ```
@@ -39,7 +39,7 @@ KiB Mem:  15400880 total,  4065708 used, 11335172 free,   133840 buffers
 KiB Swap: 10485756 total,        0 used, 10485756 free.  2948060 cached Mem
 ```
 
-4: Processors: 4
+<br><br>4: Processors: 4
 ```
 ubuntu@MasterAggregator:~$ cat /proc/cpuinfo | grep processor | wc -l
 4
@@ -64,7 +64,7 @@ NAME="Ubuntu"
 VERSION="14.04.1 LTS, Trusty Tahr"
 ```
 
-5: Initially, even root could not write new files. I eventually tracked down the source of this to a full /tmp/ directory by
+<br><br>5: Initially, even root could not write new files. I eventually tracked down the source of this to a full /tmp/ directory by
 
     ubuntu@MasterAggregator:~$ du -sch /tmp*
 
@@ -81,7 +81,7 @@ However, I didn't think giving ubuntu full sudo permission was wise. Here is a l
 as well as an alternative solution using ACL.  http://serverfault.com/questions/188537/giving-user-read-permissions-everywhere-linux
 In real life, I would probably ask for help before proceeding, so therefore I left this problem 'blank'
 
-6: The alias already existed on the node. But the command to do it would be
+<br><br>6: The alias already existed on the node. But the command to do it would be
 
     alias memsql=’mysql -u root -h 127.0.0.1’
     
@@ -89,7 +89,7 @@ You can add a --prompt=”memsql> “ at the end to make it look nicer.
 
 ## Automating a MemSQL Task
 
-8: The bash file code is
+<br>8: The bash file code is
 ```
 echo "Please input username:"
 read user
@@ -111,7 +111,7 @@ It will prompt the user to input a username, password, host, and path to write t
 
 ## Query Optimization
 
-10: I ran `explain select ...` and found
+<br>10: I ran `explain select ...` and found
 ```
 | id   | select_type | table      | type              | possible_keys         | key           | key_len | ref   | rows   | Extra                                     | Query | RealTable | Cost   |
 |   12 | SIMPLE      | partsupp   | ref               | suppkey_index         | suppkey_index | NULL    | NULL  | 801168 |                                           | NULL  | partsupp  |   NULL |
@@ -129,7 +129,7 @@ seemed to have no effect on performance.
 
 ## Answering a Support Question
 
-11:
+<br>11:
 
 Hello Pat,
 
