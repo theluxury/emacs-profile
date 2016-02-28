@@ -44,11 +44,12 @@ KiB Swap: 10485756 total,        0 used, 10485756 free.  2948060 cached Mem
 ubuntu@MasterAggregator:~$ cat /proc/cpuinfo | grep processor | wc -l
 4
 ```
-Disk space: 126GB
+Disk space: 126GB on the main drive, 74GB on what I think is the Raid array. 
 ```
 ubuntu@MasterAggregator:~$ df -h
 Filesystem      Size  Used Avail Use% Mounted on
 /dev/xvda1      126G   45G   76G  38% /
+/dev/md0         74G  3.7G   67G   6% /var/lib/memsql
 ```
 
 RAM: 14GB
