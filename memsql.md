@@ -6,7 +6,7 @@
 
     ssh ip-10-0-1-110.ec2.internal -v
   
-in the child aggregator and the log said it could not find identity file ~/.ssh/id_rsa. I copied the ~/.ssh/id_rsa from master aggregator to child aggregator and ssh worked after.
+in the child aggregator and the log said it could not find identity file ~/.ssh/id_rsa. I copied ~/.ssh/id_rsa from master aggregator to child aggregator and ssh worked after.
 
 2: I got the public ips using
 
